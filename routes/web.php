@@ -1,10 +1,30 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home', ['title' => 'Home Page']);
+});
+
+Route::get('/posts', function () {
+    $posts = Post::latest()->filter(request(['search', 'category', 'author']))->paginate(6)->withquerystring();
+    return view('posts', ['title' => 'Blog Page', 'posts' => $posts]);
+});
+
+Route::get('/tentang', function () {
+    return view('about', ['title' => 'Tentang Kami']);
+});
+
+Route::get('/kontak', function () {
+    return view('contact', ['title' => 'Kontak Kami']);
+});
+
+// detail post route using route model binding with slug laravel feature
+Route::get('/posts/{post:slug}', function (Post $post) {
+    // find post by slug
+    return view('post', ['title' => 'Detail Artikel', 'post'=> $post]);
 });
 
 Route::get('/dashboard', function () {
