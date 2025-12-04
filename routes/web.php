@@ -3,6 +3,7 @@
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostDashboardController;
 
 Route::get('/', function () {
     return view('home', ['title' => 'Home Page']);
@@ -27,9 +28,13 @@ Route::get('/posts/{post:slug}', function (Post $post) {
     return view('post', ['title' => 'Detail Artikel', 'post'=> $post]);
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/dashboard', [PostDashboardController::class, 'index'])
+    ->middleware(['auth', 'verified']) 
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
