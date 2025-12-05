@@ -28,10 +28,6 @@ Route::get('/posts/{post:slug}', function (Post $post) {
     return view('post', ['title' => 'Detail Artikel', 'post'=> $post]);
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/dashboard', [PostDashboardController::class, 'index'])
     ->middleware(['auth', 'verified']) 
     ->name('dashboard');
