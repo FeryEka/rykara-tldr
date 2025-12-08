@@ -11,7 +11,9 @@ use Illuminate\Database\Eloquent\Builder;
 class Post extends Model
 {
     use hasFactory;
-    protected $fillable = ['title', 'slug', 'content', 'created_at', 'updated_at'];
+    // protected $fillable = ['title', 'slug', 'author_id' ,'category_id', 'content', 'created_at', 'updated_at'];
+    protected $guarded = ['id'];
+
     protected $with = ['author', 'category'];
 
     public function author(): BelongsTo
