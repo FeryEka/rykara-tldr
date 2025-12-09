@@ -6,6 +6,7 @@ use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostDashboardController extends Controller
 {
@@ -35,6 +36,32 @@ class PostDashboardController extends Controller
      */
     public function store(Request $request)
     {
+        // // validate request using validate method
+        // $request->validate([
+        //     'title' => 'required',
+        //     'category_id' => 'required',
+        //     'content' => 'required',
+        // ]);
+        // validate request using validator facade
+        Validator::make($request->all(), [
+            'title' => 'required | unique:posts,title | min:5 | max:100',
+            'category_id' => 'required',
+            'content' => 'required | min:255',
+        ], [
+            'title.required' => ':attribute ini harus diisi.',
+            'title.unique' => ':attribute sudah ada, silahkan gunakan judul lain.',
+            'title.min' => ':attribute minimal :min karakter.',
+            'title.max' => ':attribute maksimal :max karakter.',
+            'category_id.required' => 'Pilih salah satu :attribute.',
+            'content.required' => ':attribute tidak boleh kosong.',
+            'content.min' => ':attribute minimal :min karakter.',
+        ],[
+            'title' => 'Judul Post',
+            'category_id' => 'Kategori',
+            'content' => 'Konten Artikel',
+        ])->validate();
+
+        // store to database
         Post::create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
@@ -43,7 +70,7 @@ class PostDashboardController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with('success', 'Post created successfully!');
     }
 
     /**
