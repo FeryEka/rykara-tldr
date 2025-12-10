@@ -70,7 +70,7 @@ class PostDashboardController extends Controller
 
     public function edit(Post $post)
     {
-        return view('dashboard.edit'. ['post' => $post]);
+        return view('dashboard.edit', ['post' => $post]);
     }
 
     public function update(Request $request, Post $post)
@@ -93,7 +93,7 @@ class PostDashboardController extends Controller
             'content' => 'Konten Artikel',
         ])->validate();
 
-        Post::update([
+        $post->update([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'author_id' => Auth::user()->id,

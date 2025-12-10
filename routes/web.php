@@ -22,9 +22,7 @@ Route::get('/kontak', function () {
     return view('contact', ['title' => 'Kontak Kami']);
 });
 
-// detail post route using route model binding with slug laravel feature
 Route::get('/posts/{post:slug}', function (Post $post) {
-    // find post by slug
     return view('post', ['title' => 'Detail Artikel', 'post'=> $post]);
 });
 
@@ -32,10 +30,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [PostDashboardController::class, 'index'])->name('dashboard');
     Route::post('/dashboard', [PostDashboardController::class, 'store']);
     Route::get('/dashboard/create', [PostDashboardController::class, 'create']);
-    Route::get('/dashboard/{post:slug}', [PostDashboardController::class, 'show']);
-    Route::get('/dashboard/{post:slug}/edit', [PostDashboardController::class, 'edit']);
-    Route::patch('/dashboard/{post:slug}/edit', [PostDashboardController::class], 'update');
     Route::delete('/dashboard/{post:slug}', [PostDashboardController::class, 'destroy']);
+    Route::get('/dashboard/{post:slug}/edit', [PostDashboardController::class, 'edit']);
+    Route::patch('/dashboard/{post:slug}', [PostDashboardController::class, 'update']);
+    Route::get('/dashboard/{post:slug}', [PostDashboardController::class, 'show']);
 });
 
 Route::middleware('auth')->group(function () {
