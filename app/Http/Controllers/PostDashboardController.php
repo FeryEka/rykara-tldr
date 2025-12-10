@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PostDashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $posts = Post::latest()->where('author_id', Auth::user()->id);
@@ -23,18 +20,12 @@ class PostDashboardController extends Controller
         return view('dashboard.index', ['posts' => $posts->paginate(5)->withquerystring()]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('dashboard.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
         // // validate request using validate method
         // $request->validate([
@@ -61,8 +52,7 @@ class PostDashboardController extends Controller
             'content' => 'Konten Artikel',
         ])->validate();
 
-        // store to database
-        Post::create([
+        $post->create([
             'title' => $request->title,
             'slug' => Str::slug($request->title),
             'author_id' => Auth::user()->id,
@@ -73,33 +63,47 @@ class PostDashboardController extends Controller
         return redirect('/dashboard')->with('success', 'Post created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Post $post)
     {
         return view('dashboard.show', ['post' => $post]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Post $post)
     {
         return view('dashboard.edit'. ['post' => $post]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        Validator::make($request->all(), [
+            'title' => 'required | min:5 | max:100 | unique:posts,title,' . $post->id,
+            'category_id' => 'required',
+            'content' => 'required | min:255',
+        ], [
+            'title.required' => ':attribute ini harus diisi.',
+            'title.unique' => ':attribute sudah ada, silahkan gunakan judul lain.',
+            'title.min' => ':attribute minimal :min karakter.',
+            'title.max' => ':attribute maksimal :max karakter.',
+            'category_id.required' => 'Pilih salah satu :attribute.',
+            'content.required' => ':attribute tidak boleh kosong.',
+            'content.min' => ':attribute minimal :min karakter.',
+        ],[
+            'title' => 'Judul Post',
+            'category_id' => 'Kategori',
+            'content' => 'Konten Artikel',
+        ])->validate();
+
+        Post::update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'author_id' => Auth::user()->id,
+            'category_id' => $request->category_id,
+            'content' => $request->content,
+        ]);
+
+        return redirect('/dashboard')->with('success', 'Post updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Post $post)
     {
         $post->delete();
