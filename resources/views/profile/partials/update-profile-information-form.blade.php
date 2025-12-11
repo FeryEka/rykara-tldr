@@ -1,3 +1,8 @@
+@push('styles')
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
+    rel="stylesheet"
+@endpush
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
@@ -77,18 +82,50 @@
     </form>
 </section>
 
-<script>
-     const input = document.getElementById('avatar');
-  const previewPhoto = () => {
-    const file = input.files;
-    if (file) {
-      const fileReader = new FileReader();
-      const preview = document.getElementById('avatar-preview');
-      fileReader.onload = function(event) {
-        preview.setAttribute('src', event.target.result);
-      }
-      fileReader.readAsDataURL(file[0]);
-    }
-  }
-  input.addEventListener("change", previewPhoto);
-</script>
+@push('scripts')
+    <script>
+        const input = document.getElementById('avatar');
+        const previewPhoto = () => {
+            const file = input.files;
+            if (file) {
+            const fileReader = new FileReader();
+            const preview = document.getElementById('avatar-preview');
+            fileReader.onload = function(event) {
+                preview.setAttribute('src', event.target.result);
+            }
+            fileReader.readAsDataURL(file[0]);
+            }
+        }
+        input.addEventListener("change", previewPhoto);
+    </script>
+
+    <script src="https://unpkg.com/filepond-plugin-image-transform/dist/filepond-plugin-image-transform.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+
+    <script>
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        FilePond.registerPlugin(FilePondPluginFileValidateType);
+        FilePond.registerPlugin(FilePondPluginFileValidateSize);
+        FilePond.registerPlugin(FilePondPluginImageTransform);
+        FilePond.registerPlugin(FilePondPluginImageResize);
+        
+        const inputElement = document.querySelector('#avatar');
+        const pond = FilePond.create(inputElement, {
+            acceptedFileTypes: ['image/png', 'image/jpg', 'image/jpeg'],
+            maxFileSize: '2MB',
+            imageResizeTargetHeight: '600',
+            imageResizeMode: 'contain',
+            imageResizeUpscale: false,
+            server: {
+                url: '/upload',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            }
+        });
+    </script>
+@endpush
