@@ -50,6 +50,10 @@ return [
             'verify_peer' => env('MAIL_VERIFY_PEER', true),
         ],
 
+        'resend' => [
+        'transport' => 'resend',
+        ],
+
         'ses' => [
             'transport' => 'ses',
         ],
