@@ -58,6 +58,27 @@ Jujur, tantangan terbesar di project ini bukan di kodingan Laravel-nya, tapi di 
 
 ---
 
+## 🗺️ Roadmap & Future Development
+
+Project ini terus berkembang! Berikut adalah fitur-fitur "High Priority" yang sedang dalam tahap pengembangan (WIP) untuk meningkatkan skalabilitas aplikasi:
+
+### 🔐 Role-Based Access Control (RBAC)
+Implementasi sistem **Multi-Auth** untuk memisahkan hak akses:
+* **Super Admin:**
+    * Full Access ke Category Management (Create/Edit/Delete kategori baru).
+    * User Management (Promote member jadi Author, Suspend user nakal).
+* **Author:** Hanya bisa CRUD postingan milik sendiri.
+
+### 👥 User Management System
+* Dashboard khusus Admin untuk memantau aktivitas user.
+* Fitur **"Ban/Suspend"** untuk user yang melanggar rules komunitas.
+
+### 🎨 UI/UX Improvements
+* **Dark Mode Support:** Karena developer & gamer butuh mata yang rileks.
+* **Rich Text Editor (Trix/CKEditor):** Upgrade dari textarea biasa agar penulisan artikel lebih ekspresif (Bold, Italic, Image Embedding).
+
+---
+
 ## 🚀 How to Run Locally
 
 Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
