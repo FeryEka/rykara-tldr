@@ -26,15 +26,6 @@ class AppServiceProvider extends ServiceProvider
 
         if($this->app->environment('production')) {
         URL::forceScheme('https');
-
-        // --- TAMBAHAN BARU (Biar Error 403 Hilang) ---
-        Request::setTrustedProxies(
-            ['*'],
-            Request::HEADER_X_FORWARDED_FOR |
-            Request::HEADER_X_FORWARDED_HOST |
-            Request::HEADER_X_FORWARDED_PORT |
-            Request::HEADER_X_FORWARDED_PROTO
-        );
         }
     }
 }
