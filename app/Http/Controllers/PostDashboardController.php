@@ -35,9 +35,9 @@ class PostDashboardController extends Controller
         // ]);
         // validate request using validator facade
         Validator::make($request->all(), [
-            'title' => 'required | unique:posts,title | min:5 | max:100',
+            'title' => 'required|unique:posts,title|min:5|max:100',
             'category_id' => 'required',
-            'content' => 'required | min:50',
+            'content' => 'required|min:50',
         ], [
             'title.required' => ':attribute ini harus diisi.',
             'title.unique' => ':attribute sudah ada, silahkan gunakan judul lain.',
@@ -76,9 +76,9 @@ class PostDashboardController extends Controller
     public function update(Request $request, Post $post)
     {
         Validator::make($request->all(), [
-            'title' => 'required | min:5 | max:100 | unique:posts,title,' . $post->id,
+            'title' => 'required|min:5|max:100|unique:posts,title,' . $post->id,
             'category_id' => 'required',
-            'content' => 'required | min:50',
+            'content' => 'required|min:50',
         ], [
             'title.required' => ':attribute ini harus diisi.',
             'title.unique' => ':attribute sudah ada, silahkan gunakan judul lain.',
