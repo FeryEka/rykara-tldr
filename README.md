@@ -15,7 +15,7 @@ Halo! Project ini adalah hasil eksplorasi gua dalam membangun **Fullstack Web Ap
 
 Web ini sudah **Live Production** di Railway dan menggunakan custom domain.
 
-🔗 **Live Demo:** [https://tldr-ry.web.id](https://tldr-ry.web.id)
+🔗 **Live Demo:** [https://www.tldr-ry.web.id](https://www.tldr-ry.web.id)
 
 ---
 
@@ -77,7 +77,7 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
     ```
 
 3.  **Setup .env**
-    Copy file `.env.example` jadi `.env`, terus atur database lokal lu.
+    Copy file `.env.example` jadi `.env`
 
     ```bash
     cp .env.example .env
@@ -94,7 +94,7 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
     ```bash
     php artisan serve
     ```
-    Buka `http://localhost:8000` dan nikmati!
+    Buka `http://localhost:8000`
 
 ---
 
@@ -102,7 +102,7 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
 
 Author: **Fery Eka Mahendra (Rykara)**
 
--   LinkedIn: [\[Link LinkedIn Lu\]](https://www.linkedin.com/in/feryekamahendra/)
+-   LinkedIn: [\[Link LinkedIn\]](linkedin.com/in/feryekamahendra/)
 -   Email: ferrh.mahendra@gmail.com
 
 ---
