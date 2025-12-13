@@ -60,22 +60,26 @@ Jujur, tantangan terbesar di project ini bukan di kodingan Laravel-nya, tapi di 
 
 ## 🗺️ Roadmap & Future Development
 
-Project ini terus berkembang! Berikut adalah fitur-fitur "High Priority" yang sedang dalam tahap pengembangan (WIP) untuk meningkatkan skalabilitas aplikasi:
+Project ini tidak berhenti di sini! Berikut adalah fitur-fitur prioritas yang sedang dalam tahap pengembangan (Work in Progress) untuk meningkatkan interaksi dan skalabilitas:
+
+### 🛡️ Comment Moderation System (Anti-Toxic)
+Agar kolom komentar tetap sehat dan bebas spam, sistem ini menggunakan alur moderasi:
+* **Approval Workflow:** Setiap komentar baru dari user akan berstatus **Pending** (Hidden) secara default.
+* **Author Control:** Penulis artikel memiliki menu khusus di Dashboard untuk meninjau komentar yang masuk.
+* **Action:** Penulis berhak melakukan **Approve** (Tampilkan ke publik) atau **Delete** (Hapus) komentar tersebut.
 
 ### 🔐 Role-Based Access Control (RBAC)
-Implementasi sistem **Multi-Auth** untuk memisahkan hak akses:
-* **Super Admin:**
-    * Full Access ke Category Management (Create/Edit/Delete kategori baru).
-    * User Management (Promote member jadi Author, Suspend user nakal).
-* **Author:** Hanya bisa CRUD postingan milik sendiri.
+Pemisahan hak akses yang lebih ketat menggunakan Laravel Gates/Policies:
+* **Super Admin:** Mengelola Master Data (Categories, Tags) dan User Management.
+* **Author:** Fokus pada konten kreator. Hanya bisa mengelola artikel dan komentar di postingan milik sendiri.
 
-### 👥 User Management System
-* Dashboard khusus Admin untuk memantau aktivitas user.
-* Fitur **"Ban/Suspend"** untuk user yang melanggar rules komunitas.
+### 👥 User Management Dashboard
+* Monitoring user terdaftar.
+* Fitur **Suspend/Ban** untuk menindak user yang melanggar aturan komunitas.
 
 ### 🎨 UI/UX Improvements
-* **Dark Mode Support:** Karena developer & gamer butuh mata yang rileks.
-* **Rich Text Editor (Trix/CKEditor):** Upgrade dari textarea biasa agar penulisan artikel lebih ekspresif (Bold, Italic, Image Embedding).
+* **Dark Mode Toggle:** Kenyamanan visual adalah prioritas (terutama untuk audiens Tech/Gaming).
+* **Rich Text Editor:** Upgrade penulisan artikel agar mendukung formatting teks yang lebih ekspresif.
 
 ---
 
