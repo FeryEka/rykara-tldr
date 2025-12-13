@@ -2,7 +2,7 @@
 
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-![Tailwind/Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Tailwind/Bootstrap](https://img.shields.io/badge/Tailwind-57FFEE?style=for-the-badge&logo=Tailwind&logoColor=white)
 ![Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white)
 
 > **"Too Long; Didn't Read"** – Platform blog simpel buat sharing berita teknologi & game tanpa basa-basi.
