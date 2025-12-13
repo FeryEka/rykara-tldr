@@ -90,7 +90,7 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
 1.  **Clone Repo**
 
     ```bash
-    git clone [https://github.com/rykara-tldr/nama-repo.git](https://github.com/rykara-tldr/nama-repo.git)
+    git clone [https://github.com/FeryEka/rykara-tldr.git](https://github.com/FeryEka/rykara-tldr.git)
     cd nama-repo
     ```
 
