@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostDashboardController;
 
@@ -34,6 +35,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard/{post:slug}/edit', [PostDashboardController::class, 'edit']);
     Route::patch('/dashboard/{post:slug}', [PostDashboardController::class, 'update']);
     Route::get('/dashboard/{post:slug}', [PostDashboardController::class, 'show']);
+});
+
+Route::middleware(['auth', 'verified', 'can:adminDashboard'])->group(function () {
+    Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
 });
 
 Route::middleware('auth')->group(function () {

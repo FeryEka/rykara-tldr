@@ -18,10 +18,10 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Fery Eka Mahendra',
             'username' => 'rykara',
-            'email' => 'rykaralabs@gmail.com',
+            'email' => 'ferrh.mahendra@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('password123'),
-            'role' => 'super_admin',
+            'role' => 'superAdmin',
             'remember_token' => Str::random(10)
         ]);
 

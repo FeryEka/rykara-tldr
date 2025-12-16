@@ -10,7 +10,9 @@
               <x-my-nav-link href="/" :current="request()->is('/')">Home</x-my-nav-link>
               <x-my-nav-link href="/posts" :current="request()->is('posts')">Blog</x-my-nav-link>
               <x-my-nav-link href="/tentang" :current="request()->is('tentang')">Tentang Kami</x-my-nav-link>
-              <x-my-nav-link href="/kontak" :current="request()->is('kontak')">Kontak</x-my-nav-link>
+              @can('adminDashboard')
+                <x-my-nav-link href="/kontak" :current="request()->is('kontak')">Kontak</x-my-nav-link>
+              @endcan
             </div>
           </div>
         </div>
@@ -49,10 +51,16 @@
                 x-transition:leave-end="transform opacity-0 scale-95"
                 class="absolute right-0 z-50 mt-2 w-48 origin-top-right rounded-md bg-white py-1 outline-1 -outline-offset-1 outline-white/10" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="1">
                   <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
-                  <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300" role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                  @can('penulisDashboard')
+                    <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300" role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                  @endcan
+                  
+                  @can('adminDashboard')
+                    <a href="/admin-dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300" role="menuitem" tabindex="-1" id="user-menu-item-2">Admin Dashboard</a>
+                  @endcan
                   <form method="POST" action="/logout">
                     @csrf
-                  <button type="submit" class="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-300 cursor-pointer" role="menuitem" tabindex="-1" id="user-menu-item-2" >Log Out</button>
+                  <button type="submit" class="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-300 cursor-pointer" role="menuitem" tabindex="-1" id="user-menu-item-3" >Log Out</button>
                   </form>
                 </div>
               </div>
@@ -100,7 +108,13 @@
           </div>
           <div class="mt-3 space-y-1 px-2">
             <a href="/profile" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Your Profile</a>
-            <a href="/dashboard" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Dashboard</a>
+            @can('penulisDashboard')
+              <a href="/dashboard" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Dashboard</a>
+            @endcan
+            
+            @can('adminDashboard')
+              <a href="/admin/dashboard" class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">sA Dashboard</a>
+            @endcan
             <form method="POST" action="/logout">
               @csrf
               <button type="submit" class="block w-full text-start px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 cursor-pointer"

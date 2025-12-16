@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'username',
         'email',
         'password',
+        'role',
         'avatar',
     ];
 
@@ -52,5 +53,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class, 'author_id');
+    }
+
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === 'superAdmin';
+    }
+
+    public function isPenulis(): bool
+    {
+        return $this->role === 'penulis';
     }
 }
