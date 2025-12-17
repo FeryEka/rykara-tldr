@@ -56,7 +56,7 @@
                   @endcan
                   
                   @can('adminDashboard')
-                    <a href="/admin-dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300" role="menuitem" tabindex="-1" id="user-menu-item-2">Admin Dashboard</a>
+                    <a href="/admin/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-300" role="menuitem" tabindex="-1" id="user-menu-item-2">Admin Dashboard</a>
                   @endcan
                   <form method="POST" action="/logout">
                     @csrf

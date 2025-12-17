@@ -9,9 +9,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $categories = Category::latest();;
-
-        return view('admin-dashboard.index', ['categories' => $categories->paginate(5)->withquerystring()]);
+        return view('admin.dashboard', ['title' => 'Admin Dashboard']);
     }
 
 

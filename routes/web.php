@@ -4,6 +4,7 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\PostDashboardController;
 
 Route::get('/', function () {
@@ -27,7 +28,7 @@ Route::get('/posts/{post:slug}', function (Post $post) {
     return view('post', ['title' => 'Detail Artikel', 'post'=> $post]);
 });
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['auth', 'verified', 'can:penulisDashboard'])->group(function () {
     Route::get('/dashboard', [PostDashboardController::class, 'index'])->name('dashboard');
     Route::post('/dashboard', [PostDashboardController::class, 'store']);
     Route::get('/dashboard/create', [PostDashboardController::class, 'create']);
@@ -38,7 +39,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::middleware(['auth', 'verified', 'can:adminDashboard'])->group(function () {
-    Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
+    Route::get('admin/dashboard', [AdminController::class, 'index'])
+        ->name('admin.dashboard');
+    Route::resource('/admin/categories', AdminCategoryController::class)
+        ->names('admin.categories');
+    Route::get('admin/categories', [AdminCategoryController::class, 'index'])
+        ->name('admin.categories');
 });
 
 Route::middleware('auth')->group(function () {

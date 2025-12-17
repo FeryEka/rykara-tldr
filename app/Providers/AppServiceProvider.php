@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Gate::define('penulisDashboard', function (User $user) {
-        return $user->isPenulis() || $user->isSuperAdmin();
+        return $user->isPenulis();
         });
 
         Gate::define('managePost', function (User $user, Post $post) {
