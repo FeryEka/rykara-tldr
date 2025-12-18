@@ -12,9 +12,8 @@ class AdminCategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->get();
-
-        return view('admin.categories.index', ['categories' => $categories->paginate(5)->withquerystring()]);
+        $categories = Category::latest();
+        return view('admin.index', ['categories' => $categories->paginate(5)->withquerystring()]);
     }
 
     /**
