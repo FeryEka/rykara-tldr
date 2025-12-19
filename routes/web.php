@@ -41,10 +41,10 @@ Route::middleware(['auth', 'verified', 'can:penulisDashboard'])->group(function 
 Route::middleware(['auth', 'verified', 'can:adminDashboard'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'index'])
         ->name('admin.dashboard');
-    Route::resource('/admin/categories', AdminCategoryController::class)
-        ->names('admin.categories');
     Route::get('admin/categories', [AdminCategoryController::class, 'index'])
         ->name('admin.categories');
+    Route::post('admin/categories', [AdminCategoryController::class, 'store']);
+    Route::get('/admin/categories/create', [AdminCategoryController::class, 'create']);
 });
 
 Route::middleware('auth')->group(function () {
