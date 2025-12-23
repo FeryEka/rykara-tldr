@@ -56,22 +56,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $categorie)
+                        @foreach ($categories as $category)
                         <tr class="border-b dark:border-gray-700">
                             <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{ $loop->iteration }}</th>
-                            <td class="px-4 py-3">{{ $categorie->name }}</td>
-                            <td class="px-4 py-3">{{ $categorie->slug }}</td>
-                            <td class="px-4 py-3">{{ $categorie->color }}</td>
+                            <td class="px-4 py-3">{{ $category->name }}</td>
+                            <td class="px-4 py-3">{{ $category->slug }}</td>
+                            <td class="px-4 py-3">{{ $category->color }}</td>
                             <td class="px-4 py-3 flex items-center justify-end">
-                                <button id="post-{{ $categorie->id }}-dropdown-button" data-dropdown-toggle="post-{{ $categorie->id }}-dropdown" class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
+                                <button id="category-{{ $category->id }}-dropdown-button" data-dropdown-toggle="category-{{ $category->id }}-dropdown" class="inline-flex items-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-700 p-1.5 dark:hover-bg-gray-800 text-center text-gray-500 hover:text-gray-800 rounded-lg focus:outline-none dark:text-gray-400 dark:hover:text-gray-100" type="button">
                                     <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
                                     </svg>
                                 </button>
-                                <div id="categorie-{{ $categorie->id }}-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
-                                    <ul class="py-1 text-sm" aria-labelledby="categorie-{{ $categorie->id }}-dropdown-button">
+                                <div id="category-{{ $category->id }}-dropdown" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                                    <ul class="py-1 text-sm" aria-labelledby="category-{{ $category->id }}-dropdown-button">
                                         <li>
-                                            <a href="/admin-dashboard/{{ $categorie->slug }}/edit" class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
+                                            <a href="/admin/categories/{{ $category->slug }}/edit" class="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200">
                                                 <svg class="w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
                                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" />
@@ -106,7 +106,7 @@
                                             <p class="mb-4 text-gray-500 dark:text-gray-300">Are you sure you want to delete this item?</p>
                                             <div class="flex justify-center items-center space-x-4">
                                                 <button data-modal-toggle="deleteModal-{{ $categorie->id }}" type="button" class="py-2 px-3 text-sm font-medium text-gray-500 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-primary-300 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">No, cancel</button>
-                                                <form action="/admin-dashboard/{{ $categorie->slug }}" method="POST">
+                                                <form action="/admin/categories/{{ $categorie->slug }}" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="py-2 px-3 text-sm font-medium text-center text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-500 dark:hover:bg-red-600 dark:focus:ring-red-900">Yes, I'm sure

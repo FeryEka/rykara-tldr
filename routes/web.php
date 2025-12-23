@@ -41,10 +41,18 @@ Route::middleware(['auth', 'verified', 'can:penulisDashboard'])->group(function 
 Route::middleware(['auth', 'verified', 'can:adminDashboard'])->group(function () {
     Route::get('admin/dashboard', [AdminController::class, 'index'])
         ->name('admin.dashboard');
-    Route::get('admin/categories', [AdminCategoryController::class, 'index'])
-        ->name('admin.categories');
-    Route::post('admin/categories', [AdminCategoryController::class, 'store']);
-    Route::get('/admin/categories/create', [AdminCategoryController::class, 'create']);
+    Route::get('admin/categories/index', [AdminCategoryController::class, 'index'])
+        ->name('admin.categories.index');
+    Route::post('admin/categories', [AdminCategoryController::class, 'store'])
+        ->name('admin.categories.store');
+    Route::get('/admin/categories/create', [AdminCategoryController::class, 'create'])
+        ->name('admin.categories.create');
+    Route::delete('admin/{category:slug}', [AdminCategoryController::class, 'destroy'])
+        ->name('admin.categories.destroy');
+    Route::get('admin/{category:slug}/edit', [AdminCategoryController::class, 'edit'])
+        ->name('admin.categories.edit');
+    Route::patch('admin/{category:slug}', [AdminCategoryController::class, 'update'])
+        ->name('admin.categories.update');
 });
 
 Route::middleware('auth')->group(function () {

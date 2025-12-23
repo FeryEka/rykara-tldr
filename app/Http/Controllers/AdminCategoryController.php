@@ -52,7 +52,7 @@ class AdminCategoryController extends Controller
             'color' => $request->color,
         ]);
 
-        return redirect()->route('/admin/categories')->with('success', 'Category created successfully!');
+        return redirect()->route('admin.categories.index')->with('success', 'Category created successfully!');
     }
 
     /**
