@@ -2,7 +2,7 @@
 
 ![Laravel](https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-![Tailwind/Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Tailwind/Bootstrap](https://img.shields.io/badge/Tailwind-00B8DB?style=for-the-badge&logo=Tailwind&logoColor=white)
 ![Railway](https://img.shields.io/badge/Railway-131415?style=for-the-badge&logo=railway&logoColor=white)
 
 > **"Too Long; Didn't Read"** – Platform blog simpel buat sharing berita teknologi & game tanpa basa-basi.
@@ -15,7 +15,7 @@ Halo! Project ini adalah hasil eksplorasi gua dalam membangun **Fullstack Web Ap
 
 Web ini sudah **Live Production** di Railway dan menggunakan custom domain.
 
-🔗 **Live Demo:** [https://tldr-ry.web.id](https://tldr-ry.web.id)
+🔗 **Live Demo:** [https://www.tldr-ry.web.id](https://www.tldr-ry.web.id)
 
 ---
 
@@ -58,6 +58,31 @@ Jujur, tantangan terbesar di project ini bukan di kodingan Laravel-nya, tapi di 
 
 ---
 
+## 🗺️ Roadmap & Future Development
+
+Project ini tidak berhenti di sini! Berikut adalah fitur-fitur prioritas yang sedang dalam tahap pengembangan (Work in Progress) untuk meningkatkan interaksi dan skalabilitas:
+
+### 🛡️ Comment Moderation System (Anti-Toxic)
+Agar kolom komentar tetap sehat dan bebas spam, sistem ini menggunakan alur moderasi:
+* **Approval Workflow:** Setiap komentar baru dari user akan berstatus **Pending** (Hidden) secara default.
+* **Author Control:** Penulis artikel memiliki menu khusus di Dashboard untuk meninjau komentar yang masuk.
+* **Action:** Penulis berhak melakukan **Approve** (Tampilkan ke publik) atau **Delete** (Hapus) komentar tersebut.
+
+### 🔐 Role-Based Access Control (RBAC)
+Pemisahan hak akses yang lebih ketat menggunakan Laravel Gates/Policies:
+* **Super Admin:** Mengelola Master Data (Categories, Tags) dan User Management.
+* **Author:** Fokus pada konten kreator. Hanya bisa mengelola artikel dan komentar di postingan milik sendiri.
+
+### 👥 User Management Dashboard
+* Monitoring user terdaftar.
+* Fitur **Suspend/Ban** untuk menindak user yang melanggar aturan komunitas.
+
+### 🎨 UI/UX Improvements
+* **Dark Mode Toggle:** Kenyamanan visual adalah prioritas (terutama untuk audiens Tech/Gaming).
+* **Rich Text Editor:** Upgrade penulisan artikel agar mendukung formatting teks yang lebih ekspresif.
+
+---
+
 ## 🚀 How to Run Locally
 
 Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
@@ -65,8 +90,8 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
 1.  **Clone Repo**
 
     ```bash
-    git clone [https://github.com/rykara-tldr/nama-repo.git](https://github.com/rykara-tldr/nama-repo.git)
-    cd nama-repo
+    git clone https://github.com/FeryEka/rykara-tldr.git
+    cd rykara-tldr
     ```
 
 2.  **Install Dependencies**
@@ -77,7 +102,7 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
     ```
 
 3.  **Setup .env**
-    Copy file `.env.example` jadi `.env`, terus atur database lokal lu.
+    Copy file `.env.example` jadi `.env`
 
     ```bash
     cp .env.example .env
@@ -94,7 +119,7 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
     ```bash
     php artisan serve
     ```
-    Buka `http://localhost:8000` dan nikmati!
+    Buka `http://localhost:8000`
 
 ---
 
@@ -102,7 +127,7 @@ Mau coba jalanin di laptop sendiri? Gas ikuti langkah ini:
 
 Author: **Fery Eka Mahendra (Rykara)**
 
--   LinkedIn: [\[Link LinkedIn Lu\]](https://www.linkedin.com/in/feryekamahendra/)
+-   LinkedIn: [\[Link LinkedIn\]](linkedin.com/in/feryekamahendra/)
 -   Email: ferrh.mahendra@gmail.com
 
 ---
